@@ -87,8 +87,8 @@ def main():
 
     # Test queries
     queries = [
-        "What is the population of Tokyo multiplied by 2?",
-        "Search for the capital of France and tell me how many letters are in its name",
+        "What is the population of Tokyo multiplied by 2? 使用中文回答。",
+        "Search for the capital of France and tell me how many letters are in its name. 使用中文回答。",
     ]
 
     for query in queries:

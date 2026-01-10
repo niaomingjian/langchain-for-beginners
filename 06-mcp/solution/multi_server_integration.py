@@ -96,7 +96,7 @@ async def main():
         print()
 
         # Test 1: Use calculator (stdio server)
-        math_query = "What is 144 divided by 12?"
+        math_query = "What is 144 divided by 12? 使用中文回答。"
         print(f"👤 User: {math_query}")
 
         math_response = await agent.ainvoke({"messages": [("human", math_query)]})
@@ -106,7 +106,7 @@ async def main():
         print()
 
         # Test 2: Use Context7 (HTTP server)
-        docs_query = "How do I use Python type hints?"
+        docs_query = "How do I use Python type hints? 使用中文回答。"
         print(f"👤 User: {docs_query}")
 
         docs_response = await agent.ainvoke({"messages": [("human", docs_query)]})
@@ -117,7 +117,7 @@ async def main():
 
         # Test 3: Query that could use both servers
         combined_query = (
-            "Calculate 50 * 2, then look up documentation about that number"
+            "Calculate 50 * 2, then look up documentation about that number. 使用中文回答。"
         )
         print(f"👤 User: {combined_query}")
 

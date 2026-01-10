@@ -34,8 +34,8 @@ def main():
     print("\n🤖 APPROACH 1: Message Arrays\n")
 
     messages = [
-        SystemMessage(content="You are a helpful translator."),
-        HumanMessage(content="Translate 'Hello, world!' to French"),
+        SystemMessage(content="You are a helpful translator. 使用中文回答。"),
+        HumanMessage(content="Translate 'Hello, world!' to French. 使用中文回答。"),
     ]
 
     print("📝 Message structure:")
@@ -59,7 +59,7 @@ def main():
     print("\n📋 APPROACH 2: Templates\n")
 
     template = ChatPromptTemplate.from_messages([
-        ("system", "You are a helpful translator."),
+        ("system", "You are a helpful translator. 使用中文回答。"),
         ("human", "Translate '{text}' to {language}"),
     ])
 

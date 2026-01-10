@@ -60,8 +60,8 @@ async def main():
 
         # Step 5: Query for documentation
         queries = [
-            "How do I use FastAPI dependency injection?",
-            "What is Python's asyncio and how do I use async/await?",
+            "How do I use FastAPI dependency injection? 使用中文回答。",
+            "What is Python's asyncio and how do I use async/await? 使用中文回答。",
         ]
 
         for query in queries:

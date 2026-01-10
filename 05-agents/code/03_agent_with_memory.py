@@ -88,7 +88,7 @@ def main():
 
     print("Test 1: First calculation")
     print("─" * 60)
-    query1 = "What is 25 * 8?"
+    query1 = "What is 25 * 8? 使用中文回答。"
     print(f"👤 User: {query1}\n")
     response1 = agent.invoke({"messages": [HumanMessage(content=query1)]}, config)
     last_message1 = response1["messages"][-1]
@@ -96,7 +96,7 @@ def main():
 
     print("Test 2: Follow-up question (agent remembers context)")
     print("─" * 60)
-    query2 = "Now multiply that result by 2"
+    query2 = "Now multiply that result by 2. 使用中文回答。"
     print(f"👤 User: {query2}\n")
     response2 = agent.invoke({"messages": [HumanMessage(content=query2)]}, config)
     last_message2 = response2["messages"][-1]
@@ -104,7 +104,7 @@ def main():
 
     print("Test 3: Another follow-up")
     print("─" * 60)
-    query3 = "What was my original calculation?"
+    query3 = "What was my original calculation? 使用中文回答。"
     print(f"👤 User: {query3}\n")
     response3 = agent.invoke({"messages": [HumanMessage(content=query3)]}, config)
     last_message3 = response3["messages"][-1]

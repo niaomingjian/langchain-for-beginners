@@ -74,7 +74,7 @@ def azure_ai_example():
     model = init_chat_model(f"azure_ai:{model_name}")
 
     response = model.invoke([
-        HumanMessage(content="What is LangChain in one sentence?")
+        HumanMessage(content="What is LangChain in one sentence? 使用中文回答。")
     ])
 
     print("✅ Response:", response.content)

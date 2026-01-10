@@ -16,7 +16,7 @@ model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-4o-mini"))
 
 messages = [
     SystemMessage(
-        content="You are a friendly and helpful AI assistant. Be conversational and warm in your responses."
+        content="You are a friendly and helpful AI assistant. Be conversational and warm in your responses. 使用中文回答。"
     ),
 ]
 

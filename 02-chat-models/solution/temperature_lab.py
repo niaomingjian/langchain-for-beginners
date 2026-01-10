@@ -12,7 +12,7 @@ from langchain_openai import ChatOpenAI
 # Load environment variables
 load_dotenv()
 
-prompt = "Write a catchy tagline for a coffee shop."
+prompt = "Write a catchy tagline for a coffee shop. 使用中文回答。"
 is_ci = os.environ.get("CI") == "true"
 temperatures = [0, 1] if is_ci else [0, 0.5, 1, 1.5, 2]  # Reduce in CI mode
 trials_per_temp = 1 if is_ci else 3  # Reduce trials in CI mode

@@ -55,7 +55,7 @@ def main():
         (
             "system",
             "Extract company information from the text. If information is not available, "
-            "make reasonable estimates based on common knowledge.",
+            "make reasonable estimates based on common knowledge. 使用中文回答。",
         ),
         ("human", "{text}"),
     ])

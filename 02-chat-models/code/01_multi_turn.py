@@ -29,8 +29,8 @@ def main():
 
     # Start with system message and first question
     messages = [
-        SystemMessage(content="You are a helpful coding tutor who gives clear, concise explanations."),
-        HumanMessage(content="What is Python?"),
+        SystemMessage(content="You are a helpful coding tutor who gives clear, concise explanations. 使用中文回答。"),
+        HumanMessage(content="What is Python? 使用中文回答。"),
     ]
 
     print("👤 User: What is Python?")
@@ -42,7 +42,7 @@ def main():
 
     # Second exchange - AI remembers the context
     print("\n👤 User: Can you show me a simple example?")
-    messages.append(HumanMessage(content="Can you show me a simple example?"))
+    messages.append(HumanMessage(content="Can you show me a simple example? 使用中文回答。"))
 
     response2 = model.invoke(messages)
     messages.append(AIMessage(content=str(response2.content)))
@@ -50,7 +50,7 @@ def main():
 
     # Third exchange - AI still remembers everything
     print("\n👤 User: What are the benefits compared to other languages?")
-    messages.append(HumanMessage(content="What are the benefits compared to other languages?"))
+    messages.append(HumanMessage(content="What are the benefits compared to other languages? 使用中文回答。"))
 
     # the 3rd AI response is not added to conversation history since it is the last in the conversation
     response3 = model.invoke(messages)

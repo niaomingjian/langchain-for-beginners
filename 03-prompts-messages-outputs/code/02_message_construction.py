@@ -37,8 +37,8 @@ def main():
     print("=" * 80)
     print("\n📝 PATTERN 1: Basic Message Types\n")
 
-    system_msg = SystemMessage(content="You are a helpful programming assistant.")
-    human_msg = HumanMessage(content="What is a variable?")
+    system_msg = SystemMessage(content="You are a helpful programming assistant. 使用中文回答。")
+    human_msg = HumanMessage(content="What is a variable? 使用中文回答。")
 
     print("Message types:")
     print(f"   • SystemMessage: {system_msg.content}")
@@ -54,10 +54,10 @@ def main():
     print("\n💬 PATTERN 2: Multi-Turn Conversations\n")
 
     conversation_messages = [
-        SystemMessage(content="You are a math tutor for beginners."),
-        HumanMessage(content="What is 5 + 3?"),
+        SystemMessage(content="You are a math tutor for beginners. 使用中文回答。"),
+        HumanMessage(content="What is 5 + 3? 使用中文回答。"),
         AIMessage(content="5 + 3 equals 8!"),
-        HumanMessage(content="Now what is 8 * 2?"),
+        HumanMessage(content="Now what is 8 * 2? 使用中文回答。"),
     ]
 
     print("Conversation history:")
@@ -85,7 +85,9 @@ def main():
         examples: list[dict[str, str]],
         new_question: str,
     ) -> list[BaseMessage]:
-        messages: list[BaseMessage] = [SystemMessage(content=f"You are a {role}.")]
+        messages: list[BaseMessage] = [
+            SystemMessage(content=f"You are a {role}. 使用中文回答。")
+        ]
 
         # Add examples (few-shot pattern using messages)
         for example in examples:

@@ -69,9 +69,9 @@ def main():
 
     # Test multiple queries
     queries = [
-        "What's the weather in Tokyo?",
-        "Tell me the temperature in Paris in celsius",
-        "Is it raining in London?",
+        "What's the weather in Tokyo? 使用中文回答。",
+        "Tell me the temperature in Paris in celsius. 使用中文回答。",
+        "Is it raining in London? 使用中文回答。",
     ]
 
     for query in queries:

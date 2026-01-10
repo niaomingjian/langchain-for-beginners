@@ -76,7 +76,7 @@ final_template = ChatPromptTemplate.from_messages([
     (
         "system",
         "Convert product descriptions into JSON format. Follow the examples exactly. "
-        "Output ONLY valid JSON, no additional text.",
+        "Output ONLY valid JSON, no additional text. 使用中文回答。",
     ),
     few_shot_template,
     ("human", "{input}"),

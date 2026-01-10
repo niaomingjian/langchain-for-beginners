@@ -22,9 +22,9 @@ model = ChatOpenAI(
 
 # Define different personalities via system prompts
 personalities = [
-    "You are a helpful assistant that speaks like a pirate.",
-    "You are a formal business analyst who uses professional language.",
-    "You are an enthusiastic teacher who loves to explain things simply.",
+    "You are a helpful assistant that speaks like a pirate. 使用中文回答。",
+    "You are a formal business analyst who uses professional language. 使用中文回答。",
+    "You are an enthusiastic teacher who loves to explain things simply. 使用中文回答。",
 ]
 
 # The same question for all personalities

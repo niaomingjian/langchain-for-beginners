@@ -21,10 +21,10 @@ model = ChatOpenAI(
 
 # Modular components for composing prompts
 role_prompts = {
-    "Teacher": "You are a patient teacher who explains concepts clearly to students.",
-    "Expert": "You are a domain expert with deep technical knowledge.",
-    "Friend": "You are a friendly peer having a casual conversation.",
-    "Professional": "You are a professional consultant providing formal advice.",
+    "Teacher": "You are a patient teacher who explains concepts clearly to students. 使用中文回答。",
+    "Expert": "You are a domain expert with deep technical knowledge. 使用中文回答。",
+    "Friend": "You are a friendly peer having a casual conversation. 使用中文回答。",
+    "Professional": "You are a professional consultant providing formal advice. 使用中文回答。",
 }
 
 style_prompts = {

@@ -68,7 +68,7 @@ def main():
     agent = create_agent(model, tools=[calculator])
 
     # Use the agent
-    query = "What is 125 * 8?"
+    query = "What is 125 * 8? 使用中文回答。"
     print(f"👤 User: {query}\n")
 
     # create_agent() returns a LangChain agent that expects messages array

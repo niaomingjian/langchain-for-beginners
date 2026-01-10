@@ -95,7 +95,7 @@ def main():
     agent = create_agent(
         model,
         tools=[search_python_knowledge_base],
-        system_prompt="You are a helpful Python expert assistant with access to Python documentation. Use the search tool when you need specific information about Python features, syntax, or best practices. For general questions, answer directly. Remember the conversation history to provide contextual responses.",
+        system_prompt="You are a helpful Python expert assistant with access to Python documentation. Use the search tool when you need specific information about Python features, syntax, or best practices. For general questions, answer directly. Remember the conversation history to provide contextual responses. 使用中文回答。",
     )
 
     # 5. Initialize conversation history

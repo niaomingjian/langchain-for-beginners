@@ -143,7 +143,7 @@ def main():
     # Test 1: Simple calculation (middleware logs but doesn't change behavior)
     print("Test 1: Simple calculation")
     print("─" * 60)
-    query1 = "What is 25 * 8?"
+    query1 = "What is 25 * 8? 使用中文回答。"
     print(f"👤 User: {query1}\n")
     response1 = agent.invoke({"messages": [HumanMessage(content=query1)]})
     last_message1 = response1["messages"][-1]
@@ -152,7 +152,7 @@ def main():
     # Test 2: Search with error handling (triggers error middleware)
     print("Test 2: Search with error handling")
     print("─" * 60)
-    query2 = "Search for information about error handling"
+    query2 = "Search for information about error handling. 使用中文回答。"
     print(f"👤 User: {query2}\n")
     response2 = agent.invoke({"messages": [HumanMessage(content=query2)]})
     last_message2 = response2["messages"][-1]

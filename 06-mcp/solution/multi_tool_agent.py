@@ -116,9 +116,9 @@ async def main():
 
         # Step 6: Test with different queries
         queries = [
-            "What is 125 * 8?",
-            "How do I use Python decorators?",
-            "Calculate 50 + 25",
+            "What is 125 * 8? 使用中文回答。",
+            "How do I use Python decorators? 使用中文回答。",
+            "Calculate 50 + 25. 使用中文回答。",
         ]
 
         for query in queries:

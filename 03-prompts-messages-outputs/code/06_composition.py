@@ -27,7 +27,7 @@ def educator_example():
     )
 
     # Reusable prompt pieces
-    system_role = "You are an expert {domain} educator."
+    system_role = "You are an expert {domain} educator. 使用中文回答。"
     teaching_context = (
         "Teaching level: {level}\nAudience: {audience}\nGoal: Clear, accurate explanations"
     )
@@ -74,7 +74,7 @@ def customer_service_example():
     )
 
     # Composable pieces for customer service
-    brand_voice = "You represent {company_name}, known for {brand_personality}."
+    brand_voice = "You represent {company_name}, known for {brand_personality}. 使用中文回答。"
     service_policy = "Policy: {policy}\nPriority: {priority}"
     response_guidelines = "Always: {guidelines}"
 
@@ -110,7 +110,7 @@ def partial_template_example():
 
     # Create a template with many variables
     template = ChatPromptTemplate.from_messages([
-        ("system", "You are a {role} at {company} specializing in {specialty}."),
+        ("system", "You are a {role} at {company} specializing in {specialty}. 使用中文回答。"),
         ("human", "{task}"),
     ])
 

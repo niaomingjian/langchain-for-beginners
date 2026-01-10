@@ -120,7 +120,7 @@ async def main():
         # Pattern 3: Execute with timeout and error handling
         print("\n\nPattern 3: Query Execution with Timeout\n")
 
-        query = "How do I use Python's asyncio library? Get the latest documentation."
+        query = "How do I use Python's asyncio library? Get the latest documentation. 使用中文回答。"
         print(f"👤 User: {query}")
 
         try:

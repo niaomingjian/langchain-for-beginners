@@ -25,7 +25,7 @@ email_template = ChatPromptTemplate.from_messages([
         "system",
         """You are a customer service representative for {company_name}.
 Write professional emails with a {tone} tone.
-Always be helpful and provide clear next steps.""",
+Always be helpful and provide clear next steps. 使用中文回答。""",
     ),
     (
         "human",

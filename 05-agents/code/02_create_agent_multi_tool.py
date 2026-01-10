@@ -110,9 +110,9 @@ def main():
 
     # Test with different queries - agent selects the right tool automatically
     queries = [
-        "What is 50 * 25?",
-        "What's the weather in Tokyo?",
-        "Tell me about LangChain",
+        "What is 50 * 25? 使用中文回答。",
+        "What's the weather in Tokyo? 使用中文回答。",
+        "Tell me about LangChain. 使用中文回答。",
     ]
 
     for query in queries:

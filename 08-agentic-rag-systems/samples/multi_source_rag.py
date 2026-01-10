@@ -130,7 +130,7 @@ def main():
     agent = create_agent(
         model,
         tools=[search_all_sources, search_text_files, search_markdown_docs, search_web_pages],
-        system_prompt="You are a helpful assistant with access to multiple document sources: text files, markdown documentation, and web pages. Choose the appropriate search tool based on the type of information needed. For general knowledge questions, answer directly without searching.",
+        system_prompt="You are a helpful assistant with access to multiple document sources: text files, markdown documentation, and web pages. Choose the appropriate search tool based on the type of information needed. For general knowledge questions, answer directly without searching. 使用中文回答。",
     )
 
     print("=" * 80 + "\n")

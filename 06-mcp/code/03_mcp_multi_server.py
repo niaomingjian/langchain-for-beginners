@@ -82,7 +82,7 @@ async def main():
 
         # 4. Test 1: Agent uses CALCULATOR tool
         print("Test 1: Math question (should use calculator)\n")
-        math_query = "What is 25 * 4 + 100?"
+        math_query = "What is 25 * 4 + 100? 使用中文回答。"
         print(f"👤 User: {math_query}")
 
         math_response = await agent.ainvoke({"messages": [("human", math_query)]})
@@ -90,7 +90,7 @@ async def main():
 
         # 5. Test 2: Agent uses CONTEXT7 tool
         print("Test 2: Documentation question (should use Context7)\n")
-        docs_query = "How do I use FastAPI to create a REST API? Get documentation."
+        docs_query = "How do I use FastAPI to create a REST API? Get documentation. 使用中文回答。"
         print(f"👤 User: {docs_query}")
 
         docs_response = await agent.ainvoke({"messages": [("human", docs_query)]})
@@ -100,7 +100,7 @@ async def main():
         print("Test 3: Combined question (should use BOTH tools)\n")
         combined_query = (
             "Calculate 15 * 8, then look up Python documentation about "
-            "async/await if the result is greater than 100"
+            "async/await if the result is greater than 100. 使用中文回答。"
         )
         print(f"👤 User: {combined_query}")
 

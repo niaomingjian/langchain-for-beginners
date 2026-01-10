@@ -103,7 +103,7 @@ def main():
     agent = create_agent(
         model,
         tools=[search_my_notes],
-        system_prompt="You are a helpful personal assistant with access to my knowledge base containing notes about Python, React, Docker, REST APIs, Git, and databases. Use the search tool when you need specific technical information from my notes. For general knowledge questions, answer directly.",
+        system_prompt="You are a helpful personal assistant with access to my knowledge base containing notes about Python, React, Docker, REST APIs, Git, and databases. Use the search tool when you need specific technical information from my notes. For general knowledge questions, answer directly. 使用中文回答。",
     )
 
     # 5. Test with mix of questions

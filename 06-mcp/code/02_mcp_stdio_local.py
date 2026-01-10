@@ -66,7 +66,7 @@ async def main():
         # 4. Test calculations
         print("🧮 Testing calculator tool...\n")
 
-        math_query = "What is 15 * 23 + 100?"
+        math_query = "What is 15 * 23 + 100? 使用中文回答。"
         print(f"👤 User: {math_query}")
 
         math_response = await agent.ainvoke({"messages": [("human", math_query)]})
@@ -76,7 +76,7 @@ async def main():
         # 5. Test temperature conversion
         print("🌡️  Testing temperature conversion...\n")
 
-        temp_query = "Convert 100 degrees Fahrenheit to Celsius"
+        temp_query = "Convert 100 degrees Fahrenheit to Celsius. 使用中文回答。"
         print(f"👤 User: {temp_query}")
 
         temp_response = await agent.ainvoke({"messages": [("human", temp_query)]})
@@ -86,7 +86,7 @@ async def main():
         # 6. Test complex calculation
         print("🔢 Testing complex math...\n")
 
-        complex_query = "Calculate the square root of 144 plus the sine of pi/2"
+        complex_query = "Calculate the square root of 144 plus the sine of pi/2. 使用中文回答。"
         print(f"👤 User: {complex_query}")
 
         complex_response = await agent.ainvoke({"messages": [("human", complex_query)]})

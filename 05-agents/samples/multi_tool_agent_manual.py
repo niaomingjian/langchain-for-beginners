@@ -78,9 +78,9 @@ def main():
     model_with_tools = model.bind_tools([calculator, get_weather, search])
 
     queries = [
-        "What is 50 * 25?",
-        "What's the weather in Tokyo?",
-        "Search for information about TypeScript",
+        "What is 50 * 25? 使用中文回答。",
+        "What's the weather in Tokyo? 使用中文回答。",
+        "Search for information about TypeScript. 使用中文回答。",
     ]
 
     for query in queries:

@@ -95,7 +95,7 @@ def main():
     agent = create_agent(
         model,
         tools=[search_langchain_docs],
-        system_prompt="You are a helpful assistant with access to LangChain documentation. Use the search tool when you need specific information about LangChain, RAG, or vector stores. For general knowledge questions, answer directly without searching.",
+        system_prompt="You are a helpful assistant with access to LangChain documentation. Use the search tool when you need specific information about LangChain, RAG, or vector stores. For general knowledge questions, answer directly without searching. 使用中文回答。",
     )
 
     # 6. Ask different types of questions to see agent decision-making

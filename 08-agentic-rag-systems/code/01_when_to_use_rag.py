@@ -79,7 +79,7 @@ A: We accept all major credit cards, PayPal, and Apple Pay.
     faq_prompt = ChatPromptTemplate.from_messages([
         (
             "system",
-            "You are a helpful customer service assistant. Answer questions based on this FAQ:\n\n{context}",
+            "You are a helpful customer service assistant. Answer questions based on this FAQ:\n\n{context} 使用中文回答。",
         ),
         ("human", "{question}"),
     ])
@@ -176,7 +176,7 @@ A: We accept all major credit cards, PayPal, and Apple Pay.
     agent = create_agent(
         model,
         tools=[search_docs],
-        system_prompt="You are a helpful technical documentation assistant. Search the docs when you need specific technical information.",
+        system_prompt="You are a helpful technical documentation assistant. Search the docs when you need specific technical information. 使用中文回答。",
     )
 
     rag_question = "How does API authentication work?"

@@ -31,7 +31,7 @@ def main():
     print("\n1️⃣  ChatPromptTemplate (Recommended for chat models):\n")
 
     chat_template = ChatPromptTemplate.from_messages([
-        ("system", "You are a {role} who speaks in {style} style."),
+        ("system", "You are a {role} who speaks in {style} style. 使用中文回答。"),
         ("human", "{question}"),
     ])
 
@@ -51,7 +51,7 @@ def main():
     print("\n2️⃣  PromptTemplate (Simple string format):\n")
 
     string_template = PromptTemplate.from_template(
-        "Write a {adjective} {item} about {topic}."
+        "Write a {adjective} {item} about {topic}. 使用中文回答。"
     )
 
     # Format the template to see the final prompt
@@ -72,7 +72,7 @@ def main():
     print("\n3️⃣  Complex Template with Many Variables:\n")
 
     complex_template = ChatPromptTemplate.from_messages([
-        ("system", "You are a {job_title} at {company} writing to a {recipient_role}."),
+        ("system", "You are a {job_title} at {company} writing to a {recipient_role}. 使用中文回答。"),
         ("human", "Write a {message_type} about {topic}. Tone: {tone}"),
     ])
 

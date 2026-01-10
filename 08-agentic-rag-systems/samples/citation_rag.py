@@ -124,7 +124,7 @@ def main():
     agent = create_agent(
         model,
         tools=[search_knowledge_base],
-        system_prompt="You are a helpful assistant that provides accurate answers with citations. When you search the knowledge base, include citation numbers (e.g., [1], [2]) in your response to reference the sources. For general knowledge questions, answer directly without searching.",
+        system_prompt="You are a helpful assistant that provides accurate answers with citations. When you search the knowledge base, include citation numbers (e.g., [1], [2]) in your response to reference the sources. For general knowledge questions, answer directly without searching. 使用中文回答。",
     )
 
     print("✅ Agentic citation system ready!\n")

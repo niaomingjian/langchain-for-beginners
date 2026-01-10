@@ -101,7 +101,7 @@ def main():
         messages = [
             SystemMessage(content="""You are a helpful assistant. Answer the question based on the provided context.
 If the question can be answered without the context, still try to reference it if relevant.
-If the context is not helpful, answer based on your general knowledge."""),
+If the context is not helpful, answer based on your general knowledge. 使用中文回答。"""),
             HumanMessage(content=f"""Context:
 {context}
 

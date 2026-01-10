@@ -21,7 +21,7 @@ def temperature_comparison():
     print(f"🌡️  Temperature Comparison for {model_name}\n")
     print("=" * 80)
 
-    prompt = "Write a creative opening line for a sci-fi story about time travel."
+    prompt = "Write a creative opening line for a sci-fi story about time travel. 使用中文回答。"
     is_ci = os.environ.get("CI") == "true"
     temperatures = [0, 1] if is_ci else [0, 1, 2]  # Reduce temperatures in CI mode
     tries = 1 if is_ci else 2  # Reduce tries in CI mode
@@ -62,7 +62,7 @@ def max_tokens_example():
     print("\n\n📏 Max Tokens Limit\n")
     print("=" * 80)
 
-    prompt = "Write a detailed explanation of machine learning in 5 paragraphs."
+    prompt = "Write a detailed explanation of machine learning in 5 paragraphs. 使用中文回答。"
 
     # Note: Reasoning models (like gpt-4o-mini) use tokens internally for
     # "chain of thought" reasoning before producing visible output. They need higher

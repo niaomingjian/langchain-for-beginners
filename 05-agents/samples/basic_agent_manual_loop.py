@@ -53,7 +53,7 @@ def main():
 
     model_with_tools = model.bind_tools([calculator])
 
-    query = "What is 125 * 8?"
+    query = "What is 125 * 8? 使用中文回答。"
     print(f"User: {query}\n")
 
     # Agent loop simulation

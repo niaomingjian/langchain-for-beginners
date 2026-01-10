@@ -16,7 +16,7 @@ load_dotenv()
 models_to_test = ["gpt-4o", "gpt-4o-mini"]
 
 # Test prompt
-prompt = "Explain the difference between machine learning and deep learning."
+prompt = "Explain the difference between machine learning and deep learning. 使用中文回答。"
 
 
 def test_model(model_name: str) -> dict:

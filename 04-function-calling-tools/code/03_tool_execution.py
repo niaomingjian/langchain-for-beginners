@@ -47,7 +47,7 @@ def main():
 
     model_with_tools = model.bind_tools([get_weather])
 
-    query = "What's the weather in Seattle?"
+    query = "What's the weather in Seattle? 使用中文回答。"
     print(f"User: {query}\n")
 
     # ==========================================================================

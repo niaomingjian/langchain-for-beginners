@@ -47,7 +47,7 @@ def emotion_to_emoji_example():
 
     # Combine with the final question
     final_template = ChatPromptTemplate.from_messages([
-        ("system", "Convert emotions to emojis based on these examples:"),
+        ("system", "Convert emotions to emojis based on these examples: 使用中文回答。"),
         few_shot_template,
         ("human", "{input}"),
     ])
@@ -97,7 +97,7 @@ def code_comment_example():
     )
 
     final_template = ChatPromptTemplate.from_messages([
-        ("system", "Generate clear, concise comments for code based on these examples:"),
+        ("system", "Generate clear, concise comments for code based on these examples: 使用中文回答。"),
         few_shot_template,
         ("human", "Code: {code}"),
     ])

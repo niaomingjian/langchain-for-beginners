@@ -24,7 +24,7 @@ translation_template = ChatPromptTemplate.from_messages([
     (
         "system",
         """You are a professional translator. Translate text to {target_language} with {formality} formality.
-Maintain the original meaning while adapting to cultural context.""",
+Maintain the original meaning while adapting to cultural context. 使用中文回答。""",
     ),
     (
         "human",

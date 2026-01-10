@@ -186,11 +186,11 @@ def main():
 
     # Test queries for each tool
     queries = [
-        "Convert 100 USD to EUR",
-        "What's the distance between New York and London?",
-        "What time is it in Tokyo right now?",
-        "How many miles from Paris to Rome?",
-        "Convert 50 GBP to JPY",
+        "Convert 100 USD to EUR. 使用中文回答。",
+        "What's the distance between New York and London? 使用中文回答。",
+        "What time is it in Tokyo right now? 使用中文回答。",
+        "How many miles from Paris to Rome? 使用中文回答。",
+        "Convert 50 GBP to JPY. 使用中文回答。",
     ]
 
     for query in queries:

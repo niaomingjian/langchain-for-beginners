@@ -26,7 +26,7 @@ templates = {
         "description": "Explains code snippets in plain English",
         "variables": ["code", "language"],
         "template": ChatPromptTemplate.from_messages([
-            ("system", "You are a programming instructor. Explain code clearly to beginners."),
+            ("system", "You are a programming instructor. Explain code clearly to beginners. 使用中文回答。"),
             (
                 "human",
                 """Explain this {language} code:
@@ -44,7 +44,7 @@ Describe what it does, how it works, and any key concepts.""",
         "description": "Creates concise summaries of long text",
         "variables": ["text", "length"],
         "template": ChatPromptTemplate.from_messages([
-            ("system", "You are a professional summarizer. Create clear, {length} summaries."),
+            ("system", "You are a professional summarizer. Create clear, {length} summaries. 使用中文回答。"),
             ("human", "Summarize this text:\n\n{text}"),
         ]),
     },
@@ -55,7 +55,7 @@ Describe what it does, how it works, and any key concepts.""",
         "template": ChatPromptTemplate.from_messages([
             (
                 "system",
-                "You are a creative writer. Write {length} {genre} stories that are engaging and well-crafted.",
+                "You are a creative writer. Write {length} {genre} stories that are engaging and well-crafted. 使用中文回答。",
             ),
             ("human", "Write a story about: {theme}"),
         ]),
@@ -67,7 +67,7 @@ Describe what it does, how it works, and any key concepts.""",
         "template": ChatPromptTemplate.from_messages([
             (
                 "system",
-                "You are a data formatting expert. Convert data to {format} format with proper structure.",
+                "You are a data formatting expert. Convert data to {format} format with proper structure. 使用中文回答。",
             ),
             ("human", "Format this data:\n\n{data}"),
         ]),
@@ -77,7 +77,7 @@ Describe what it does, how it works, and any key concepts.""",
         "description": "Answers questions with specific expertise",
         "variables": ["question", "expertise"],
         "template": ChatPromptTemplate.from_messages([
-            ("system", "You are an expert in {expertise}. Provide accurate, detailed answers."),
+            ("system", "You are an expert in {expertise}. Provide accurate, detailed answers. 使用中文回答。"),
             ("human", "{question}"),
         ]),
     },

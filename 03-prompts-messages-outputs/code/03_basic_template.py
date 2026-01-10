@@ -30,7 +30,7 @@ def main():
     template = ChatPromptTemplate.from_messages([
         (
             "system",
-            "You are a helpful assistant that translates {input_language} to {output_language}.",
+            "You are a helpful assistant that translates {input_language} to {output_language}. 使用中文回答。",
         ),
         ("human", "{text}"),
     ])

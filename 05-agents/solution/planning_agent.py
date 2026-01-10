@@ -155,8 +155,8 @@ def main():
 
     # Test queries requiring multiple steps
     queries = [
-        "What's the distance from London to Paris in miles, and is that more or less than 500 miles?",
-        "Find the city population of New York and Tokyo, calculate the difference, and tell me the result",
+        "What's the distance from London to Paris in miles, and is that more or less than 500 miles? 使用中文回答。",
+        "Find the city population of New York and Tokyo, calculate the difference, and tell me the result. 使用中文回答。",
     ]
 
     for query in queries:

@@ -47,7 +47,7 @@ def main():
             "system",
             """Extract product information from the description.
 If a field is not explicitly mentioned, make a reasonable inference.
-Ensure the category is one of: Electronics, Clothing, Food, Books, or Home.""",
+Ensure the category is one of: Electronics, Clothing, Food, Books, or Home. 使用中文回答。""",
         ),
         ("human", "{description}"),
     ])
