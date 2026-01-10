@@ -22,7 +22,7 @@ def main():
 
     # Using structured messages for better control
     messages = [
-        SystemMessage(content="You are a helpful AI assistant who explains things simply."),
+        SystemMessage(content="You are a helpful AI assistant who explains things simply.使用中文回答。"),
         HumanMessage(content="Explain quantum computing to a 10-year-old."),
     ]
 

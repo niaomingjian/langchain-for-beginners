@@ -15,7 +15,7 @@ load_dotenv()
 def compare_models():
     print("🔬 Comparing AI Models\n")
 
-    prompt = "Explain recursion in programming in one sentence."
+    prompt = "Explain recursion in programming in one sentence. 使用中文回答。"
     models = ["gpt-4o", "gpt-4o-mini"]
 
     for model_name in models:

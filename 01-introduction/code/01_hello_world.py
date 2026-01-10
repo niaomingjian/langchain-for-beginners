@@ -21,7 +21,7 @@ def main():
     )
 
     # Make your first AI call!
-    response = model.invoke("What is LangChain in one sentence?")
+    response = model.invoke("What is LangChain in one sentence? 使用中文回答。")
 
     print("🤖 AI Response:", response.content)
     print("\n✅ Success! You just made your first LangChain call!")
