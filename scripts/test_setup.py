@@ -31,10 +31,21 @@ def fetch_github_models(endpoint: str, api_key: str) -> list[str]:
         return []
 
     if isinstance(data, dict) and isinstance(data.get("data"), list):
-        return [item.get("id") for item in data["data"] if isinstance(item, dict)]
-    if isinstance(data, list):
-        return [item.get("id") for item in data if isinstance(item, dict)]
-    return []
+        items = data["data"]
+    elif isinstance(data, list):
+        items = data
+    else:
+        return []
+
+    models = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        model_id = item.get("id")
+        model_name = item.get("name") or item.get("display_name") or model_id
+        if model_name:
+            models.append(model_name)
+    return models
 
 
 def test_setup():
@@ -60,8 +71,8 @@ def test_setup():
         )
         if models:
             print("📚 GitHub Models available:")
-            for model_id in models:
-                print(f"   - {model_id}")
+            for model in models:
+                print(f"   - {model}")
             print("")
         else:
             print("⚠️  Could not fetch GitHub Models list (continuing)...\n")
