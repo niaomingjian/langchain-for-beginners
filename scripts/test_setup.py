@@ -1,11 +1,40 @@
 """
 Setup Test - Verify AI Provider Access
 """
+import json
 import os
 import sys
+import urllib.error
+import urllib.request
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+
+
+def fetch_github_models(endpoint: str, api_key: str) -> list[str]:
+    """Fetch supported GitHub Models from the inference endpoint."""
+    url = endpoint.rstrip("/") + "/models"
+    request = urllib.request.Request(
+        url,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Accept": "application/json",
+        },
+        method="GET",
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=10) as response:
+            payload = response.read().decode("utf-8")
+        data = json.loads(payload)
+    except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError):
+        return []
+
+    if isinstance(data, dict) and isinstance(data.get("data"), list):
+        return [item.get("id") for item in data["data"] if isinstance(item, dict)]
+    if isinstance(data, list):
+        return [item.get("id") for item in data if isinstance(item, dict)]
+    return []
 
 
 def test_setup():
@@ -25,6 +54,18 @@ def test_setup():
         sys.exit(1)
     
     try:
+        models = fetch_github_models(
+            os.getenv("AI_ENDPOINT"),
+            os.getenv("AI_API_KEY"),
+        )
+        if models:
+            print("📚 GitHub Models available:")
+            for model_id in models:
+                print(f"   - {model_id}")
+            print("")
+        else:
+            print("⚠️  Could not fetch GitHub Models list (continuing)...\n")
+
         model = ChatOpenAI(
             model=os.getenv("AI_MODEL", "gpt-5-mini"),
             base_url=os.getenv("AI_ENDPOINT"),
