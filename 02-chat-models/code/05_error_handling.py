@@ -44,7 +44,7 @@ def error_examples():
     print("\n1️⃣  Example: Invalid API Key\n")
     try:
         bad_model = ChatOpenAI(
-            model=os.environ.get("AI_MODEL", "gpt-5-mini"),
+            model=os.environ.get("AI_MODEL", "gpt-4o-mini"),
             api_key="invalid_key_12345",  # Intentionally invalid
             base_url=os.getenv("AI_ENDPOINT")
         )
@@ -73,7 +73,7 @@ def error_examples():
     try:
         # Test with invalid key
         bad_model = ChatOpenAI(
-            model=os.environ.get("AI_MODEL", "gpt-5-mini"),
+            model=os.environ.get("AI_MODEL", "gpt-4o-mini"),
             api_key="sk-invalid12345",
             base_url=os.getenv("AI_ENDPOINT"),
         )

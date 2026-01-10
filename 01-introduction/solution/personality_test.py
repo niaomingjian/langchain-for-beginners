@@ -13,7 +13,7 @@ from langchain_openai import ChatOpenAI
 load_dotenv()
 
 # Create a ChatOpenAI instance
-model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-5-mini"))
+model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-4o-mini"))
 
 # Define different personalities via system prompts
 personalities = [

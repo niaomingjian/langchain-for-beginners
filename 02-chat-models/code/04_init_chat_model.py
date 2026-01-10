@@ -64,7 +64,7 @@ def azure_ai_example():
     os.environ["AZURE_AI_ENDPOINT"] = endpoint
     os.environ["AZURE_AI_CREDENTIAL"] = os.getenv("AI_API_KEY", "")
 
-    model_name = os.getenv("AI_MODEL", "gpt-5-mini")
+    model_name = os.getenv("AI_MODEL", "gpt-4o-mini")
 
     print(f"🔗 Using endpoint: {endpoint}")
     print(f"🤖 Using model: {model_name}\n")
@@ -88,10 +88,10 @@ def switching_providers_concept():
     print("init_chat_model() makes switching between providers simple:\n")
 
     print("  # Azure AI (recommended for this course)")
-    print('  model = init_chat_model("azure_ai:gpt-5-mini")')
+    print('  model = init_chat_model("azure_ai:gpt-4o-mini")')
     print()
     print("  # Standard OpenAI")
-    print('  model = init_chat_model("openai:gpt-5-mini")')
+    print('  model = init_chat_model("openai:gpt-4o-mini")')
     print()
     print("  # Anthropic")
     print('  model = init_chat_model("anthropic:claude-3-5-sonnet-20241022")')

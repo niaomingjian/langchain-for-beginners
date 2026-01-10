@@ -30,7 +30,7 @@ class CallRecord:
 
 
 class TokenTracker:
-    # Pricing per 1M tokens (approximate for gpt-5-mini)
+    # Pricing per 1M tokens (approximate for gpt-4o-mini)
     INPUT_COST_PER_MILLION = 0.15  # $0.15 per 1M input tokens
     OUTPUT_COST_PER_MILLION = 0.60  # $0.60 per 1M output tokens
     WARNING_THRESHOLD = 10000  # Warn at 10k tokens
@@ -154,7 +154,7 @@ def main():
     print("📊 Token Usage Tracker\n")
     print("=" * 60 + "\n")
 
-    model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-5-mini"))
+    model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-4o-mini"))
 
     tracker = TokenTracker()
 
@@ -188,7 +188,7 @@ def main():
     print()
 
     print("💰 Cost Optimization Tips:")
-    print("   • Use gpt-5-mini for simple tasks")
+    print("   • Use gpt-4o-mini for simple tasks")
     print("   • Keep prompts concise")
     print("   • Use streaming for better UX without extra cost")
     print("   • Cache responses when possible")

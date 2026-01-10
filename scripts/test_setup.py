@@ -78,7 +78,7 @@ def test_setup():
             print("⚠️  Could not fetch GitHub Models list (continuing)...\n")
 
         model = ChatOpenAI(
-            model=os.getenv("AI_MODEL", "gpt-5-mini"),
+            model=os.getenv("AI_MODEL", "gpt-4o-mini"),
             base_url=os.getenv("AI_ENDPOINT"),
             api_key=os.getenv("AI_API_KEY"),
         )
@@ -87,7 +87,7 @@ def test_setup():
         
         print("✅ SUCCESS! Your AI provider is working!")
         print(f"   Provider: {os.getenv('AI_ENDPOINT')}")
-        print(f"   Model: {os.getenv('AI_MODEL', 'gpt-5-mini')}")
+        print(f"   Model: {os.getenv('AI_MODEL', 'gpt-4o-mini')}")
         print(f"\nModel response: {response.content}")
         print("\n🎉 You're ready to start the course!")
     except Exception as error:

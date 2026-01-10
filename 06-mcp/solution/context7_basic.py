@@ -49,7 +49,7 @@ async def main():
 
         # Step 3: Create the AI model
         model = ChatOpenAI(
-            model=os.getenv("AI_MODEL", "gpt-5-mini"),
+            model=os.getenv("AI_MODEL", "gpt-4o-mini"),
             base_url=os.getenv("AI_ENDPOINT"),
             api_key=os.getenv("AI_API_KEY"),
         )

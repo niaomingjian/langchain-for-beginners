@@ -17,7 +17,7 @@ load_dotenv()
 
 
 def temperature_comparison():
-    model_name = os.environ.get("AI_MODEL", "gpt-5-mini")
+    model_name = os.environ.get("AI_MODEL", "gpt-4o-mini")
     print(f"🌡️  Temperature Comparison for {model_name}\n")
     print("=" * 80)
 
@@ -64,7 +64,7 @@ def max_tokens_example():
 
     prompt = "Write a detailed explanation of machine learning in 5 paragraphs."
 
-    # Note: Reasoning models (like gpt-5-mini) use tokens internally for
+    # Note: Reasoning models (like gpt-4o-mini) use tokens internally for
     # "chain of thought" reasoning before producing visible output. They need higher
     # limits (500+) to have tokens left for the actual response.
     is_ci = os.environ.get("CI") == "true"

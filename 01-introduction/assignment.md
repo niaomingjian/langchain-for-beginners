@@ -69,8 +69,8 @@ load_dotenv()
 **Tasks**:
 1. Create a file called `model_performance.py`
 2. Test at least 2 models available on GitHub Models:
-   - `gpt-5`
-   - `gpt-5-mini`
+   - `gpt-4o`
+   - `gpt-4o-mini`
 3. For each model, measure:
    - Response time
    - Response length (character count)
@@ -85,8 +85,8 @@ load_dotenv()
 ─────────────────────────────────────────────
 Model          | Time    | Length | Quality
 ─────────────────────────────────────────────
-gpt-5-mini    | 567ms   | 234ch  | ⭐⭐⭐⭐
-gpt-5         | 1234ms  | 456ch  | ⭐⭐⭐⭐⭐
+gpt-4o-mini    | 567ms   | 234ch  | ⭐⭐⭐⭐
+gpt-4o         | 1234ms  | 456ch  | ⭐⭐⭐⭐⭐
 ```
 
 **Success Criteria**:
@@ -108,8 +108,8 @@ load_dotenv()
 question = "Explain the difference between machine learning and deep learning."
 
 models = [
-    {"name": "gpt-5", "description": "Most capable"},
-    {"name": "gpt-5-mini", "description": "Fast and efficient"},
+    {"name": "gpt-4o", "description": "Most capable"},
+    {"name": "gpt-4o-mini", "description": "Fast and efficient"},
 ]
 
 # 4. Create a function to test each model:

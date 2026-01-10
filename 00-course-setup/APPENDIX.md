@@ -24,21 +24,21 @@ You can follow the steps below to deploy models in Microsoft Foundry or visit th
 
 You'll need to deploy two models for this course:
 
-**Deploy gpt-5-mini & gpt-5 (Chat Models):**
+**Deploy gpt-4o-mini & gpt-4o (Chat Models):**
 
 1. In your project, go to **Models + endpoints** in the left navigation
 2. Click **+ Deploy model** → **Deploy base model**
-3. Search for and select **gpt-5-mini**
+3. Search for and select **gpt-4o-mini**
 4. Click **Confirm**
 5. Configure deployment:
-   - **Deployment name**: `gpt-5-mini` (keep this name for consistency)
+   - **Deployment name**: `gpt-4o-mini` (keep this name for consistency)
    - **Model version**: Select the latest available
    - **Deployment type**: Global Standard
    - Click **Deploy**
 6. Wait for deployment to complete
-7. Follow the same process and deploy `gpt-5` as well
+7. Follow the same process and deploy `gpt-4o` as well
 
-> **Why deploy both models?** `gpt-5-mini` is used throughout the course for most examples (it's faster and more cost-effective). `gpt-5` is used in Chapter 1 for model comparison exercises to demonstrate the performance and capability differences between models.
+> **Why deploy both models?** `gpt-4o-mini` is used throughout the course for most examples (it's faster and more cost-effective). `gpt-4o` is used in Chapter 1 for model comparison exercises to demonstrate the performance and capability differences between models.
 
 **Deploy Text Embedding Model:**
 
@@ -72,7 +72,7 @@ Ensure that you add `/openai/v1` to the end of your endpoint URL.
 # Microsoft Foundry Configuration
 AI_API_KEY=your_azure_api_key_here
 AI_ENDPOINT=https://your-resource.openai.azure.com/openai/v1
-AI_MODEL=gpt-5-mini
+AI_MODEL=gpt-4o-mini
 ```
 
 **Replace `your_azure_api_key_here` with your actual Azure API key and update the endpoint URL!**
@@ -98,7 +98,7 @@ Once you've completed the Azure setup, return to the [main setup guide](./README
 2. Check that `.env` contains all required variables:
    - `AI_API_KEY=your_key`
    - `AI_ENDPOINT=your_endpoint_url`
-   - `AI_MODEL=gpt-5-mini`
+   - `AI_MODEL=gpt-4o-mini`
 3. No quotes needed around the values
 4. No spaces before or after the `=`
 

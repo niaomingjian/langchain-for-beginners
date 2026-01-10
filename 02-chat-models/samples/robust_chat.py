@@ -20,7 +20,7 @@ def robust_chat(
     fallback_response: str = "I apologize, but I'm having trouble connecting right now. Please try again later.",
 ) -> str:
     """Makes a robust API call with automatic retry and fallback."""
-    model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-5-mini"))
+    model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-4o-mini"))
 
     # Use LangChain's built-in retry logic - automatically handles retries with exponential backoff
     model_with_retry = model.with_retry(stop_after_attempt=max_retries)
@@ -70,7 +70,7 @@ def test_robust_chat():
     # Test with invalid key by creating a bad model directly
     try:
         bad_model = ChatOpenAI(
-            model=os.environ.get("AI_MODEL", "gpt-5-mini"),
+            model=os.environ.get("AI_MODEL", "gpt-4o-mini"),
             api_key="invalid_key",
         )
         bad_model_with_retry = bad_model.with_retry(stop_after_attempt=2)

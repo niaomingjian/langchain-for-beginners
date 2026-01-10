@@ -13,7 +13,7 @@ from langchain_openai import ChatOpenAI
 load_dotenv()
 
 # Models to compare
-models_to_test = ["gpt-5", "gpt-5-mini"]
+models_to_test = ["gpt-4o", "gpt-4o-mini"]
 
 # Test prompt
 prompt = "Explain the difference between machine learning and deep learning."

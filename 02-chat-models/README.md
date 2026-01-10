@@ -583,7 +583,7 @@ os.environ["AZURE_AI_ENDPOINT"] = os.getenv("AI_ENDPOINT")
 os.environ["AZURE_AI_CREDENTIAL"] = os.getenv("AI_API_KEY")
 
 # Initialize using azure_ai provider prefix
-model = init_chat_model("azure_ai:gpt-5-mini")
+model = init_chat_model("azure_ai:gpt-4o-mini")
 
 response = model.invoke("What is LangChain?")
 ```
@@ -608,7 +608,7 @@ def main():
     os.environ["AZURE_AI_ENDPOINT"] = os.getenv("AI_ENDPOINT", "")
     os.environ["AZURE_AI_CREDENTIAL"] = os.getenv("AI_API_KEY", "")
 
-    model_name = os.getenv("AI_MODEL", "gpt-5-mini")
+    model_name = os.getenv("AI_MODEL", "gpt-4o-mini")
 
     # Initialize model using the azure_ai provider prefix
     model = init_chat_model(f"azure_ai:{model_name}")
@@ -641,7 +641,7 @@ When you run this example with `python 02-chat-models/code/04_init_chat_model.py
 
 📝 Note: Converted endpoint from /openai/v1 to /models format
 🔗 Using endpoint: https://your-resource.openai.azure.com/models
-🤖 Using model: gpt-5-mini
+🤖 Using model: gpt-4o-mini
 
 ✅ Response: LangChain is a framework for developing applications powered by 
 language models, providing tools and abstractions for building chains, agents, 
@@ -652,10 +652,10 @@ and retrieval systems.
 init_chat_model() makes switching between providers simple:
 
   # Azure AI (recommended for this course)
-  model = init_chat_model("azure_ai:gpt-5-mini")
+  model = init_chat_model("azure_ai:gpt-4o-mini")
 
   # Standard OpenAI
-  model = init_chat_model("openai:gpt-5-mini")
+  model = init_chat_model("openai:gpt-4o-mini")
 
   # Anthropic
   model = init_chat_model("anthropic:claude-3-5-sonnet-20241022")
@@ -682,7 +682,7 @@ init_chat_model() makes switching between providers simple:
 
 | Provider | Format | Example |
 |----------|--------|--------|
-| Azure AI | `azure_ai:<model>` | `azure_ai:gpt-5-mini` |
+| Azure AI | `azure_ai:<model>` | `azure_ai:gpt-4o-mini` |
 | OpenAI | `openai:<model>` | `openai:gpt-4` |
 | Anthropic | `anthropic:<model>` | `anthropic:claude-3-5-sonnet` |
 | Google | `google-genai:<model>` | `google-genai:gemini-pro` |

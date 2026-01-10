@@ -23,7 +23,7 @@ For this coures you can use GitHub Models or Microsoft Foundry to access LLMs. T
 ### Why GitHub Models?
 
 - ✅ **Free**: No credit card required
-- ✅ **Powerful**: Access to GPT-5, GPT-5-mini, and other models
+- ✅ **Powerful**: Access to GPT-4o, GPT-4o-mini, and other models
 - ✅ **Easy**: Use your existing GitHub account
 - ✅ **Learning**: Perfect for this course!
 
@@ -64,7 +64,7 @@ Ensure that your `.env` file exists and examine it to make sure it has these req
 ```bash
 AI_API_KEY=your_personal_token_will_show_up_here
 AI_ENDPOINT=https://models.inference.ai.azure.com
-AI_MODEL=gpt-5-mini
+AI_MODEL=gpt-4o-mini
 ```
 
 **Alternative: Microsoft Foundry:**
@@ -181,7 +181,7 @@ Open `.env` in your text editor and configure your AI provider.
 ```bash
 AI_API_KEY=ghp_your_github_token_here
 AI_ENDPOINT=https://models.inference.ai.azure.com
-AI_MODEL=gpt-5-mini
+AI_MODEL=gpt-4o-mini
 ```
 
 **Replace `ghp_your_github_token_here` with your actual GitHub token!**
@@ -209,7 +209,7 @@ python scripts/test_setup.py
 
 ✅ SUCCESS! Your AI provider is working!
    Provider: https://models.inference.ai.azure.com
-   Model: gpt-5-mini
+   Model: gpt-4o-mini
 
 Model response: Setup successful!
 

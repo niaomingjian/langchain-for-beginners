@@ -197,7 +197,7 @@ The `ChatOpenAI` constructor takes three key parameters: `model` (which AI model
 We read these from environment variables (`AI_MODEL`, `AI_ENDPOINT`, `AI_API_KEY`) defined in your `.env` file. This keeps credentials out of code and lets you switch providers by updating `.env`.
 
 **Why use environment variables?**
-- `AI_MODEL` specifies which AI model to use (like `gpt-5` or `gpt-5-mini`)
+- `AI_MODEL` specifies which AI model to use (like `gpt-4o` or `gpt-4o-mini`)
 - `AI_ENDPOINT` tells the application where to find the AI service
 - `AI_API_KEY` provides authentication credentials.
 
@@ -293,7 +293,7 @@ Quantum computing is like having a super-fast magic box that can try many differ
 
 GitHub Models gives you access to multiple AI models. Let's compare them!
 
-**You're building an app and need to choose which model to use.** Should you use `gpt-5` (more capable but costlier) or `gpt-5-mini` (faster and cheaper)?
+**You're building an app and need to choose which model to use.** Should you use `gpt-4o` (more capable but costlier) or `gpt-4o-mini` (faster and cheaper)?
 
 Think of it like choosing between calculators: a scientific calculator handles complex equations but takes more time and resources, while a basic calculator is fast and efficient for simple math. The best way to decide is to test both with your actual prompts and compare their responses.
 
@@ -318,7 +318,7 @@ def compare_models():
     print("🔬 Comparing AI Models\n")
 
     prompt = "Explain recursion in programming in one sentence."
-    models = ["gpt-5", "gpt-5-mini"]
+    models = ["gpt-4o", "gpt-4o-mini"]
 
     for model_name in models:
         print(f"\n📊 Testing: {model_name}")
@@ -339,8 +339,8 @@ def compare_models():
 
     print("\n✅ Comparison complete!")
     print("\n💡 Key Observations:")
-    print("   - gpt-5 is more capable and detailed")
-    print("   - gpt-5-mini is faster and uses fewer resources")
+    print("   - gpt-4o is more capable and detailed")
+    print("   - gpt-4o-mini is faster and uses fewer resources")
     print("   - Choose based on your needs: speed vs. capability")
 
 if __name__ == "__main__":
@@ -355,12 +355,12 @@ When you run this example with `python 01-introduction/code/03_model_comparison.
 🔬 Comparing AI Models
 
 
-📊 Testing: gpt-5
+📊 Testing: gpt-4o
 ──────────────────────────────────────────────────
 Response: Recursion in programming is a technique where a function calls itself to solve smaller instances of the same problem until it reaches a base case.
 ⏱️  Time: 2134ms
 
-📊 Testing: gpt-5-mini
+📊 Testing: gpt-4o-mini
 ──────────────────────────────────────────────────
 Response: Recursion is when a function calls itself to solve a problem by breaking it down into smaller, similar sub-problems.
 ⏱️  Time: 1845ms
@@ -368,8 +368,8 @@ Response: Recursion is when a function calls itself to solve a problem by breaki
 ✅ Comparison complete!
 
 💡 Key Observations:
-   - gpt-5 is more capable and detailed
-   - gpt-5-mini is faster and uses fewer resources
+   - gpt-4o is more capable and detailed
+   - gpt-4o-mini is faster and uses fewer resources
    - Choose based on your needs: speed vs. capability
 ```
 
@@ -379,15 +379,15 @@ Response: Recursion is when a function calls itself to solve a problem by breaki
 
 #### **What's happening**:
 1. We define a single prompt asking about recursion
-2. We loop through two different models: `gpt-5` and `gpt-5-mini`
+2. We loop through two different models: `gpt-4o` and `gpt-4o-mini`
 3. For each model, we create a new `ChatOpenAI` instance with that model name
 4. We invoke the same prompt on each model
 5. We display the response from each model for comparison
 
 #### **What you'll notice**:
 - Different models have different response styles
-- `gpt-5` tends to be more detailed and sophisticated
-- `gpt-5-mini` is more concise but still accurate
+- `gpt-4o` tends to be more detailed and sophisticated
+- `gpt-4o-mini` is more concise but still accurate
 - Both answers are correct, just expressed differently
 
 ---

@@ -56,7 +56,7 @@ import os
 load_dotenv()
 
 # 3. Create the ChatOpenAI model
-model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-5-mini"))
+model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-4o-mini"))
 
 # 4. Initialize conversation history list with a SystemMessage for personality
 messages = [
