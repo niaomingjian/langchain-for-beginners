@@ -13,7 +13,12 @@ from langchain_openai import ChatOpenAI
 load_dotenv()
 
 # Create a ChatOpenAI instance
-model = ChatOpenAI(model=os.environ.get("AI_MODEL", "gpt-4o-mini"))
+
+model = ChatOpenAI(
+    model=os.environ.get("AI_MODEL", "gpt-4o-mini"),
+    base_url=os.getenv("AI_ENDPOINT"),
+    api_key=os.getenv("AI_API_KEY"),
+)
 
 # Define different personalities via system prompts
 personalities = [
@@ -28,12 +33,12 @@ question = "What is artificial intelligence?"
 # Test each personality
 for personality in personalities:
     print(f"\n--- Personality: {personality[:50]}... ---")
-    
+
     messages = [
         SystemMessage(content=personality),
         HumanMessage(content=question),
     ]
-    
+
     response = model.invoke(messages)
     print(f"Response: {response.content}\n")
     print("-" * 50)
