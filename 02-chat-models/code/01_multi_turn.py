@@ -24,12 +24,14 @@ def main():
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
         base_url=os.getenv("AI_ENDPOINT"),
-        api_key=os.getenv("AI_API_KEY")
+        api_key=os.getenv("AI_API_KEY"),
     )
 
     # Start with system message and first question
     messages = [
-        SystemMessage(content="You are a helpful coding tutor who gives clear, concise explanations. 使用中文回答。"),
+        SystemMessage(
+            content="You are a helpful coding tutor who gives clear, concise explanations. 使用中文回答。"
+        ),
         HumanMessage(content="What is Python?"),
     ]
 
@@ -50,14 +52,20 @@ def main():
 
     # Third exchange - AI still remembers everything
     print("\n👤 User: What are the benefits compared to other languages?")
-    messages.append(HumanMessage(content="What are the benefits compared to other languages?"))
+    messages.append(
+        HumanMessage(content="What are the benefits compared to other languages?")
+    )
 
     # the 3rd AI response is not added to conversation history since it is the last in the conversation
     response3 = model.invoke(messages)
-    print(f"\n🤖 AI: {response3.content}")
 
+    print(f"\n🤖 AI: {response3.content}")
+    messages.append(AIMessage(content=str(response3.content)))
     print("\n\n✅ Notice how the AI maintains context throughout the conversation!")
-    print(f"📊 Total messages in history: {len(messages)} messages, that include 1 system message, 3 Human messages and 2 AI responses")
+    print(
+        f"📊 Total messages in history: {len(messages)} messages, that include 1 system message, 3 Human messages and 3 AI responses"
+    )
+
 
 if __name__ == "__main__":
     main()

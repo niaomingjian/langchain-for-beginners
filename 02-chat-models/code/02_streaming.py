@@ -25,11 +25,13 @@ def non_streaming_example():
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
         base_url=os.getenv("AI_ENDPOINT"),
-        api_key=os.getenv("AI_API_KEY")
+        api_key=os.getenv("AI_API_KEY"),
     )
 
     start_time = time.time()
-    response = model.invoke("Explain how the internet works in 2 paragraphs. 使用中文回答。")
+    response = model.invoke(
+        "Explain how the internet works in 2 paragraphs. 使用中文回答。"
+    )
     end_time = time.time()
 
     print(response.content)
@@ -44,18 +46,20 @@ def streaming_example():
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
         base_url=os.getenv("AI_ENDPOINT"),
-        api_key=os.getenv("AI_API_KEY")
+        api_key=os.getenv("AI_API_KEY"),
     )
 
     start_time = time.time()
     first_chunk_time = 0
 
     # Stream the response chunk by chunk
-    for chunk in model.stream("Explain how the internet works in 2 paragraphs."):
+    for chunk in model.stream(
+        "Explain how the internet works in 2 paragraphs. 使用中文回答。"
+    ):
         if first_chunk_time == 0:
             first_chunk_time = time.time()
         # Write each chunk as it arrives (no newline)
-        print(chunk.content, end="", flush=True) 
+        print(chunk.content, end="", flush=True)
 
     print("\n\n✅ Stream complete!")
     end_time = time.time()
