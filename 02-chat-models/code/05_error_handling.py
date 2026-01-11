@@ -50,7 +50,7 @@ def error_examples():
         )
 
         print("🔄 Attempting call with invalid API key...")
-        bad_model.invoke("Hello")
+        bad_model.invoke("Hello 使用中文回答。")
         print("✅ Call succeeded (unexpected!)")
     except Exception as error:
         error_msg = str(error)[:100] + "..." if len(str(error)) > 100 else str(error)
@@ -61,7 +61,7 @@ def error_examples():
     print("\n2️⃣  Example: Using with_retry() with Valid Credentials\n")
     try:
         print("🔄 Making call with with_retry() (should succeed on first try)...")
-        response = robust_call("What is 5+5?")
+        response = robust_call("What is 5+5? 使用中文回答。")
         print(f"🤖 Response: {response}")
         print("💡 No retries needed when everything works correctly!\n")
     except Exception as error:
@@ -79,7 +79,7 @@ def error_examples():
         )
 
         print("🔄 Testing error categorization with invalid credentials...")
-        bad_model.invoke("Hello")
+        bad_model.invoke("Hello 使用中文回答。")
     except Exception as error:
         error_msg = str(error).lower()
         

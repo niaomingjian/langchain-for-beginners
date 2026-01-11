@@ -26,7 +26,7 @@ def track_token_usage():
     print("📊 Token Usage Tracking Example\n")
 
     # Make a request
-    response = model.invoke("Explain what Python is in 2 sentences.")
+    response = model.invoke("Explain what Python is in 2 sentences. 使用中文回答。")
 
     # Extract token usage from metadata (usage_metadata in Python)
     usage = response.usage_metadata

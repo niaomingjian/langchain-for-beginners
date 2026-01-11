@@ -63,10 +63,10 @@ def main():
 
     # Test queries
     queries = [
-        "artificial intelligence programming",  # Semantic: should find Python/ML
-        "deep learning models",  # Semantic: should find neural networks
-        "pets for apartments",  # Semantic: should find cats
-        "outdoor exercise",  # Semantic: should find dogs
+        "artificial intelligence programming. 使用中文回答。",  # Semantic: should find Python/ML
+        "deep learning models. 使用中文回答。",  # Semantic: should find neural networks
+        "pets for apartments. 使用中文回答。",  # Semantic: should find cats
+        "outdoor exercise. 使用中文回答。",  # Semantic: should find dogs
     ]
 
     for query in queries:

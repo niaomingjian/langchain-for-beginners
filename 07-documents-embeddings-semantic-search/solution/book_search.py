@@ -88,10 +88,10 @@ def main():
     print("=" * 80 + "\n")
 
     queries = [
-        "books about programming",
-        "stories set in space",
-        "learning about AI and technology",
-        "cooking and recipes",
+        "books about programming. 使用中文回答。",
+        "stories set in space. 使用中文回答。",
+        "learning about AI and technology. 使用中文回答。",
+        "cooking and recipes. 使用中文回答。",
     ]
 
     for query in queries:

@@ -1,6 +1,7 @@
 """
 Setup Test - Verify AI Provider Access
 """
+
 import json
 import os
 import sys
@@ -51,19 +52,19 @@ def fetch_github_models(endpoint: str, api_key: str) -> list[str]:
 def test_setup():
     """Test AI provider connection and configuration."""
     print("🚀 Testing AI provider connection...\n")
-    
+
     # Load environment variables
     load_dotenv()
-    
+
     # Check if required variables are set
     if not os.getenv("AI_API_KEY"):
         print("❌ ERROR: AI_API_KEY not found in .env file")
         sys.exit(1)
-    
+
     if not os.getenv("AI_ENDPOINT"):
         print("❌ ERROR: AI_ENDPOINT not found in .env file")
         sys.exit(1)
-    
+
     try:
         models = fetch_github_models(
             os.getenv("AI_ENDPOINT"),
@@ -82,9 +83,9 @@ def test_setup():
             base_url=os.getenv("AI_ENDPOINT"),
             api_key=os.getenv("AI_API_KEY"),
         )
-        
-        response = model.invoke("Say 'Setup successful!'")
-        
+
+        response = model.invoke("Say 'Setup successful!' 使用中文回答。")
+
         print("✅ SUCCESS! Your AI provider is working!")
         print(f"   Provider: {os.getenv('AI_ENDPOINT')}")
         print(f"   Model: {os.getenv('AI_MODEL', 'gpt-4o-mini')}")

@@ -159,11 +159,11 @@ def main():
     tracker = TokenTracker()
 
     queries = [
-        "What is Python?",
-        "Explain async/await in Python in detail",
-        "Write a short example of a Python HTTP server",
-        "What are the benefits of using type hints in Python?",
-        "Explain the difference between SQL and NoSQL databases",
+        "What is Python? 使用中文回答。",
+        "Explain async/await in Python in detail. 使用中文回答。",
+        "Write a short example of a Python HTTP server. 使用中文回答。",
+        "What are the benefits of using type hints in Python? 使用中文回答。",
+        "Explain the difference between SQL and NoSQL databases. 使用中文回答。",
     ]
 
     print("🚀 Running test queries...")

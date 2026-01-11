@@ -75,10 +75,10 @@ def main():
 
     # Search queries with different relevance levels
     queries = [
-        "AI and machine learning programming",
-        "pets that need less attention",
-        "web development frameworks",
-        "cooking recipes",  # Intentionally unrelated
+        "AI and machine learning programming. 使用中文回答。",
+        "pets that need less attention. 使用中文回答。",
+        "web development frameworks. 使用中文回答。",
+        "cooking recipes. 使用中文回答。",  # Intentionally unrelated
     ]
 
     for query in queries:

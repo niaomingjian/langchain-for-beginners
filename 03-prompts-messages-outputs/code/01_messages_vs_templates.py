@@ -35,7 +35,7 @@ def main():
 
     messages = [
         SystemMessage(content="You are a helpful translator. 使用中文回答。"),
-        HumanMessage(content="Translate 'Hello, world!' to French. 使用中文回答。"),
+        HumanMessage(content="Translate 'Hello, world!' to French"),
     ]
 
     print("📝 Message structure:")

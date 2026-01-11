@@ -51,7 +51,7 @@ def main():
     print("\n2️⃣  PromptTemplate (Simple string format):\n")
 
     string_template = PromptTemplate.from_template(
-        "Write a {adjective} {item} about {topic}. 使用中文回答。"
+        "Write a {adjective} {item} about {topic}."
     )
 
     # Format the template to see the final prompt

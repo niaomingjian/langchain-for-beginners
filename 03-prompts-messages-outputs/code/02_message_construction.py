@@ -38,7 +38,7 @@ def main():
     print("\n📝 PATTERN 1: Basic Message Types\n")
 
     system_msg = SystemMessage(content="You are a helpful programming assistant. 使用中文回答。")
-    human_msg = HumanMessage(content="What is a variable? 使用中文回答。")
+    human_msg = HumanMessage(content="What is a variable?")
 
     print("Message types:")
     print(f"   • SystemMessage: {system_msg.content}")
@@ -55,9 +55,9 @@ def main():
 
     conversation_messages = [
         SystemMessage(content="You are a math tutor for beginners. 使用中文回答。"),
-        HumanMessage(content="What is 5 + 3? 使用中文回答。"),
+        HumanMessage(content="What is 5 + 3?"),
         AIMessage(content="5 + 3 equals 8!"),
-        HumanMessage(content="Now what is 8 * 2? 使用中文回答。"),
+        HumanMessage(content="Now what is 8 * 2?"),
     ]
 
     print("Conversation history:")

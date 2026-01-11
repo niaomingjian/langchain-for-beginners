@@ -103,7 +103,7 @@ def main():
         {"chunk_size": 500, "chunk_overlap": 100, "name": "Large, With Overlap"},
     ]
 
-    query = "What is supervised learning?"
+    query = "What is supervised learning? 使用中文回答。"
 
     print(f'Query: "{query}"\n')
     print("Testing different chunking strategies...\n")

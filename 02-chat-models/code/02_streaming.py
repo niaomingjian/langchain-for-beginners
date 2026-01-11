@@ -29,7 +29,7 @@ def non_streaming_example():
     )
 
     start_time = time.time()
-    response = model.invoke("Explain how the internet works in 2 paragraphs.")
+    response = model.invoke("Explain how the internet works in 2 paragraphs. 使用中文回答。")
     end_time = time.time()
 
     print(response.content)

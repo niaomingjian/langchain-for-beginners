@@ -97,9 +97,9 @@ def main():
 
     # Search with different queries
     queries = [
-        "machine learning basics",
-        "advanced programming patterns",
-        "web development",
+        "machine learning basics. 使用中文回答。",
+        "advanced programming patterns. 使用中文回答。",
+        "web development. 使用中文回答。",
     ]
 
     for query in queries:

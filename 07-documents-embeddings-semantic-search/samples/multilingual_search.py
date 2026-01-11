@@ -75,10 +75,10 @@ def main():
 
     # Search in different languages
     queries = [
-        ("A sleeping cat", "English query about cats"),
-        ("Un chat qui dort", "French query about cats"),
-        ("Python programming", "English query about programming"),
-        ("Programación en Python", "Spanish query about programming"),
+        ("A sleeping cat. 使用中文回答。", "English query about cats"),
+        ("Un chat qui dort. 使用中文回答。", "French query about cats"),
+        ("Python programming. 使用中文回答。", "English query about programming"),
+        ("Programación en Python. 使用中文回答。", "Spanish query about programming"),
     ]
 
     for query, description in queries:
