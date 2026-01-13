@@ -13,12 +13,18 @@ Run: python 06-mcp/code/02_mcp_stdio_local.py
 
 import asyncio
 import os
+import sys
+import traceback
+from contextlib import AsyncExitStack
 from pathlib import Path
 
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_mcp_adapters.client import MultiServerMCPClient
+from langchain_mcp_adapters.tools import load_mcp_tools
 from langchain_openai import ChatOpenAI
+from mcp.client.session import ClientSession
+from mcp.client.stdio import StdioServerParameters, stdio_client
 
 load_dotenv()
 
@@ -31,22 +37,81 @@ async def main():
 
     # Path to the local calculator server
     server_path = SCRIPT_DIR / "servers" / "stdio_calculator_server.py"
+    # Prefer repo-local venv Python if present to avoid PATH/pyenv mismatch
+    venv_python = SCRIPT_DIR.parents[2] / ".venv" / "Scripts" / "python.exe"
+    python_cmd = str(venv_python) if venv_python.exists() else sys.executable
+    # Inherit full env to avoid Windows/Git-Bash encoding or PATH quirks
+    server_env = os.environ.copy()
+    server_env.setdefault("PYTHONUTF8", "1")
+    server_env.setdefault("PYTHONIOENCODING", "utf-8")
+
+    print(f"🚀 Starting stdio MCP server: {server_path}")
+    print(f"🐍 Python for stdio server: {python_cmd}")
+    print(f"📁 Server cwd: {SCRIPT_DIR}")
+
+    # Preflight: connect via raw MCP stdio client to surface server stderr on failure
+    stderr_log_path = SCRIPT_DIR / "stdio_server.stderr.log"
+    preflight_params = StdioServerParameters(
+        command=python_cmd,
+        args=["-u", str(server_path)],
+        env=server_env,
+        cwd=str(SCRIPT_DIR),
+    )
+    try:
+        with stderr_log_path.open("w", encoding="utf-8") as errlog:
+            async with stdio_client(preflight_params, errlog=errlog) as (read, write):
+                async with ClientSession(read, write) as session:
+                    await session.initialize()
+                    await session.list_tools()
+        print("✅ Preflight ok: stdio MCP server initialized\n")
+    except Exception as e:
+        print(f"❌ Preflight failed: {e}")
+        if stderr_log_path.exists():
+            log_text = stderr_log_path.read_text(encoding="utf-8", errors="replace")
+            if log_text.strip():
+                print("\n--- Server stderr (preflight) ---")
+                print(log_text)
+        return
 
     # Create MCP client with stdio transport - runs server as subprocess
     client = MultiServerMCPClient(
         {
             "localCalculator": {
                 "transport": "stdio",
-                "command": "python",
-                "args": [str(server_path)],
+                "command": python_cmd,
+                "args": ["-u", str(server_path)],
+                "env": server_env,
+                "cwd": str(SCRIPT_DIR),
             }
         }
     )
 
+    session_stack: AsyncExitStack | None = None
+
     try:
         # 1. Get tools from local MCP server
         print("📟 Connecting to stdio MCP server...")
-        tools = await client.get_tools()
+        try:
+            tools = await client.get_tools()
+        except Exception as e:
+            print(f"⚠️  MultiServerMCPClient failed: {e}")
+            print("↪️  Falling back to raw stdio session for tool loading...")
+            session_stack = AsyncExitStack()
+            preflight_params = StdioServerParameters(
+                command=python_cmd,
+                args=["-u", str(server_path)],
+                env=server_env,
+                cwd=str(SCRIPT_DIR),
+            )
+            with stderr_log_path.open("a", encoding="utf-8") as errlog:
+                read, write = await session_stack.enter_async_context(
+                    stdio_client(preflight_params, errlog=errlog)
+                )
+                session = await session_stack.enter_async_context(
+                    ClientSession(read, write)
+                )
+                await session.initialize()
+                tools = await load_mcp_tools(session)
 
         print(f"✅ Connected! Retrieved {len(tools)} tools from local server:")
         for tool in tools:
@@ -86,7 +151,9 @@ async def main():
         # 6. Test complex calculation
         print("🔢 Testing complex math...\n")
 
-        complex_query = "Calculate the square root of 144 plus the sine of pi/2. 使用中文回答。"
+        complex_query = (
+            "Calculate the square root of 144 plus the sine of pi/2. 使用中文回答。"
+        )
         print(f"👤 User: {complex_query}")
 
         complex_response = await agent.ainvoke({"messages": [("human", complex_query)]})
@@ -108,8 +175,15 @@ async def main():
 
     except Exception as e:
         print(f"❌ Error with stdio MCP server: {e}")
+        # ExceptionGroup (TaskGroup) hides useful details; dump sub-exceptions if present.
+        if hasattr(e, "exceptions"):
+            for idx, sub in enumerate(e.exceptions, start=1):
+                print(f"\n--- Sub-exception {idx} ---")
+                print("".join(traceback.format_exception(sub)))
 
     finally:
+        if session_stack is not None:
+            await session_stack.aclose()
         # Note: Python MCP client handles cleanup automatically
         print("\n✅ MCP client connection closed")
 
