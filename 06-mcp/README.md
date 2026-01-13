@@ -283,6 +283,7 @@ agent = create_agent(model, tools)
 **Server**: [`code/servers/stdio_calculator_server.py`](./code/servers/stdio_calculator_server.py)  
 **Code**: [`code/02_mcp_stdio_local.py`](./code/02_mcp_stdio_local.py)  
 **Run**: `python 06-mcp/code/02_mcp_stdio_local.py`
+> **Windows 提示**: 建议用 PowerShell 运行 stdio 示例。Windows 下 stdio + asyncio 在Git Bash终端上容易提前关闭。
 
 **Transport Comparison**:
 

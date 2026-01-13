@@ -15,7 +15,7 @@ import asyncio
 import os
 import sys
 import traceback
-from contextlib import AsyncExitStack
+from contextlib import AsyncExitStack, asynccontextmanager
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -27,6 +27,11 @@ from mcp.client.session import ClientSession
 from mcp.client.stdio import StdioServerParameters, stdio_client
 
 load_dotenv()
+
+# Optional: force SelectorEventLoop on Windows to stabilize stdio subprocesses
+if os.name == "nt" and os.getenv("MCP_FORCE_SELECTOR_LOOP") == "1":
+    print("🔧 Force WindowsSelectorEventLoopPolicy")
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # Get the directory of this file for resolving server path
 SCRIPT_DIR = Path(__file__).parent
@@ -87,31 +92,53 @@ async def main():
     )
 
     session_stack: AsyncExitStack | None = None
+    original_stdio_client = None
 
     try:
         # 1. Get tools from local MCP server
         print("📟 Connecting to stdio MCP server...")
+        # Patch adapters stdio client to capture server stderr for debugging
+        import mcp.client.stdio as mcp_stdio
+
+        original_stdio_client = mcp_stdio.stdio_client
+
+        @asynccontextmanager
+        async def stdio_client_with_errlog(server):
+            with stderr_log_path.open("a", encoding="utf-8") as errlog:
+                async with original_stdio_client(server, errlog=errlog) as (
+                    read,
+                    write,
+                ):
+                    yield read, write
+
+        mcp_stdio.stdio_client = stdio_client_with_errlog
         try:
             tools = await client.get_tools()
         except Exception as e:
             print(f"⚠️  MultiServerMCPClient failed: {e}")
-            print("↪️  Falling back to raw stdio session for tool loading...")
-            session_stack = AsyncExitStack()
-            preflight_params = StdioServerParameters(
-                command=python_cmd,
-                args=["-u", str(server_path)],
-                env=server_env,
-                cwd=str(SCRIPT_DIR),
-            )
-            with stderr_log_path.open("a", encoding="utf-8") as errlog:
-                read, write = await session_stack.enter_async_context(
-                    stdio_client(preflight_params, errlog=errlog)
+            print("↪️  Retrying single-server get_tools (no gather)...")
+            try:
+                tools = await client.get_tools(server_name="localCalculator")
+                print("✅ Single-server get_tools ok\n")
+            except Exception as e2:
+                print(f"⚠️  Single-server get_tools failed: {e2}")
+                print("↪️  Falling back to raw stdio session for tool loading...")
+                session_stack = AsyncExitStack()
+                preflight_params = StdioServerParameters(
+                    command=python_cmd,
+                    args=["-u", str(server_path)],
+                    env=server_env,
+                    cwd=str(SCRIPT_DIR),
                 )
-                session = await session_stack.enter_async_context(
-                    ClientSession(read, write)
-                )
-                await session.initialize()
-                tools = await load_mcp_tools(session)
+                with stderr_log_path.open("a", encoding="utf-8") as errlog:
+                    read, write = await session_stack.enter_async_context(
+                        stdio_client(preflight_params, errlog=errlog)
+                    )
+                    session = await session_stack.enter_async_context(
+                        ClientSession(read, write)
+                    )
+                    await session.initialize()
+                    tools = await load_mcp_tools(session)
 
         print(f"✅ Connected! Retrieved {len(tools)} tools from local server:")
         for tool in tools:
@@ -182,6 +209,10 @@ async def main():
                 print("".join(traceback.format_exception(sub)))
 
     finally:
+        if original_stdio_client is not None:
+            import mcp.client.stdio as mcp_stdio
+
+            mcp_stdio.stdio_client = original_stdio_client
         if session_stack is not None:
             await session_stack.aclose()
         # Note: Python MCP client handles cleanup automatically

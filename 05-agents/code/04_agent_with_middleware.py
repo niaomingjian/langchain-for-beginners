@@ -62,8 +62,12 @@ def calculator(expression: str) -> str:
 @tool(args_schema=SearchInput)
 def search(query: str) -> str:
     """Search for information. May fail occasionally for demonstration."""
+
+    print("#### Note: Search Tool was called.\n")
+    print(f"#### Note: query: {query}\n")
     # Simulate occasional failures for demonstration
     if "error" in query.lower():
+        print("#### Simulate occasional failures for demonstration.\n")
         raise Exception("Search service temporarily unavailable")
 
     return f'Search results for "{query}": Found relevant information about {query}.'
@@ -108,6 +112,8 @@ class ToolErrorMiddleware(AgentMiddleware):
         try:
             return handler(request)
         except Exception as e:
+            print(f"##### failed: {e}")
+
             tool_name = request.tool_call.get("name", "unknown")
             print(f"  [Middleware] ⚠️  Tool '{tool_name}' failed: {e}")
             print("  [Middleware] 🔄 Returning fallback message")
@@ -152,7 +158,7 @@ def main():
     # Test 2: Search with error handling (triggers error middleware)
     print("Test 2: Search with error handling")
     print("─" * 60)
-    query2 = "Search for information about error handling. 使用中文回答。"
+    query2 = "Search for information about error handling. "
     print(f"👤 User: {query2}\n")
     response2 = agent.invoke({"messages": [HumanMessage(content=query2)]})
     last_message2 = response2["messages"][-1]

@@ -86,6 +86,7 @@ def search(query: str) -> str:
         "javascript frameworks": "Popular JavaScript frameworks include React, Vue, Angular, Svelte, and Next.js for building modern web applications.",
     }
 
+    print("#### Note: Search Tool was called.\n")
     # Find best match (simplified)
     query_lower = query.lower()
     for key, value in search_results.items():
